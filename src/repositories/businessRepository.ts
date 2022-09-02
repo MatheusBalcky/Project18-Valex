@@ -8,10 +8,6 @@ export interface Business {
 }
 
 export async function findById(id: number) {
-  const result = await db.query<Business, [number]>(
-    "SELECT * FROM businesses WHERE id=$1",
-    [id]
-  );
-
+  const result = await db.query<Business, [number]>("SELECT * FROM businesses WHERE id=$1", [id]);
   return result.rows[0];
 }
