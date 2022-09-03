@@ -18,7 +18,7 @@ export async function activateCardService(activateData: any) {
 }
 
 
-async function verifyCardId(cardId: number){
+export async function verifyCardId(cardId: number){
     const card = await cardsRepositories.findById(cardId);
     if(!card){
         throw { code: 'InvalidCard', message: "Card id invalid, not found!"}
