@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { createCardSchema } from "../schemas/createCardSchema";
+import * as cardsSchemas from "../schemas/cardsSchemas";
 import { TransactionTypes } from "../repositories/cardRepository";
 
 export async function createCardMiddle(req :Request, res :Response, next :NextFunction) {
@@ -19,7 +19,7 @@ function verifyCardType(type: TransactionTypes){
 }
 
 function cardSchemaValidation(cardData: object){
-    const { error } = createCardSchema.validate(cardData);
+    const { error } = cardsSchemas.createCardSchema.validate(cardData);
     if(error){
         throw { code: 'InvalidEntity', message: error.details[0].message }
     }

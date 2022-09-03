@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { activateCardSchema } from "../schemas/activateCardSchema";
+import * as cardsSchemas from "../schemas/cardsSchemas";
 
 export async function activateCardMiddle(req :Request, res :Response, next :NextFunction) {
     
@@ -10,7 +10,7 @@ export async function activateCardMiddle(req :Request, res :Response, next :Next
 
 
 function activateCardValidateBySchema(requestData: object){
-    const { error } = activateCardSchema.validate(requestData)
+    const { error } = cardsSchemas.activateCardSchema.validate(requestData)
     if(error){
         throw {
             code: 'InvalidEntity',

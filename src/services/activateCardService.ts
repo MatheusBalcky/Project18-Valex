@@ -26,7 +26,7 @@ export async function verifyCardId(cardId: number){
     return card;
 }
 
-function verifyExpirationDate(expirationDate: any){
+export function verifyExpirationDate(expirationDate: any){
     const cardExpirationDate = expirationDate;
     const currentDate = new Date();
 
@@ -40,6 +40,7 @@ function verifyExpirationDate(expirationDate: any){
     }
 }
 
+//* Um cartão é considerao ativado se ele já tem senha
 function verifyIfTheCardIsActivated(password: any){
     if(password !== null){
         throw { code: 'CardAlreadyActivated', message: 'This card is already activated!'}
