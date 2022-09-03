@@ -103,20 +103,11 @@ export async function insert(cardData: CardInsertData) {
 }
 
 export async function update(id: number, cardData: CardUpdateData) {
-  const { objectColumns: cardColumns, objectValues: cardValues } =
-    mapObjectToUpdateQuery({
-      object: cardData,
-      offset: 2,
-    });
+  const { 
+    objectColumns: cardColumns,
+    objectValues: cardValues } = mapObjectToUpdateQuery({ object: cardData, offset: 2,});
 
-  db.query(
-    `
-    UPDATE cards
-      SET ${cardColumns}
-    WHERE $1=id
-  `,
-    [id, ...cardValues]
-  );
+    db.query(`UPDATE cards SET ${cardColumns} WHERE $1 = id`, [id, ...cardValues]);
 }
 
 export async function remove(id: number) {
