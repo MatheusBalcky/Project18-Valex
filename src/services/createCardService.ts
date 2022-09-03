@@ -2,9 +2,9 @@ import dotenv from 'dotenv'; dotenv.config();
 import * as companyRepository from "../repositories/companyRepository";
 import * as employeeRepository from "../repositories/employeeRepository";
 import * as cardsRepository  from "../repositories/cardRepository";
+import * as cryptr from '../utils/cryptrUtils';
 import { TransactionTypes } from "../repositories/cardRepository";
 import { faker } from '@faker-js/faker';
-import Cryptr from 'cryptr';
 
 export async function createCardService(apiKey: string, employeeId: number, type: TransactionTypes){
     
@@ -53,9 +53,8 @@ async function verifyDoubleCardType(type: TransactionTypes, employeeId: number){
 }
 
 function createSecurityCode(){
-    const cryptr = new Cryptr(`${process.env.CRYPTR_KEY}`);
     const securityCodeGenerated = faker.random.numeric(3);
-    const securityCodeEncrypted = cryptr.encrypt(securityCodeGenerated);
+    const securityCodeEncrypted = cryptr.encryptByCryptr(securityCodeGenerated);
     return securityCodeEncrypted;
 }
 
