@@ -15,9 +15,9 @@ export async function paymentService(paymentData: paymentData, businessId: numbe
 
     verifyExpirationDate(card.expirationDate);
 
-    verifyIfTheCardIsUnblocked(card);
-    
     authenticateCardPassword(paymentData.password, card.password);
+
+    verifyIfTheCardIsUnblocked(card);
 
     const business = await verifyIfTheBusinessIsRegistered(businessId);
 

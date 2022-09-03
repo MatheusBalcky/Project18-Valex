@@ -20,6 +20,7 @@ export async function errorHandler (error: any, req :Request, res :Response, nex
     if (error.code === 'ExpiredCard' 
     || error.code === 'CardAlreadyActivated' 
     || error.code === 'CardAlreadyBlocked'
+    || error.code === 'CardAlreadyUnblocked'
     || error.code === 'InvalidCompanyKey'
     || error.code === 'CardNotActivatedError'
     || error.code === 'InvalidBusiness'
@@ -31,7 +32,10 @@ export async function errorHandler (error: any, req :Request, res :Response, nex
 
     }
 
-    if(error.code === 'SecurityCodeIncorrect' || error.code === 'IncorrectPassword' || error.code === 'RechargeValueInvalid'){
+    if(error.code === 'SecurityCodeIncorrect'
+    || error.code === 'IncorrectPassword'
+    || error.code === 'RechargeValueInvalid'
+    || error.code === 'CardBlocked'){
         return res.status(403).send({ error: error.message, moreDetails: error.messageDetail});
         // Forbidden
     }
