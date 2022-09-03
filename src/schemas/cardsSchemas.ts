@@ -13,4 +13,5 @@ export const createCardSchema = Joi.object({
 
 export const blockCardSchema = Joi.object({
     password: Joi.string().length(4).pattern(/[0-9]{4}/)
-})
+});
+

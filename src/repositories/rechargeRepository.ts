@@ -21,7 +21,5 @@ export async function insert(rechargeData: RechargeInsertData) {
   const { cardId, amount } = rechargeData;
 
   db.query<any, [number, number]>(
-    `INSERT INTO recharges ("cardId", amount) VALUES ($1, $2)`,
-    [cardId, amount]
-  );
+    `INSERT INTO recharges ("cardId", amount) VALUES ($1, $2)`,[cardId, amount]);
 }

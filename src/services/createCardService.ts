@@ -30,10 +30,10 @@ export async function createCardService(apiKey: string, employeeId: number, type
     return cardDataToInsert; 
 }
 
-async function verifyApiKey(key: string){
+export async function verifyApiKey(key: string){
     const company = await companyRepository.findByApiKey(key);
     if(!company){
-        throw { code: 'NotFoundCompany', message: 'Company not found!' }
+        throw { code: 'InvalidCompanyKey', message: 'Your company api key is invalid!' }
     };
 }
 
