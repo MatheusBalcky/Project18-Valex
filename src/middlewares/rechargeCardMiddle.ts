@@ -8,12 +8,12 @@ export async function rechargeCardMiddle(req :Request, res :Response, next :Next
 
     await verifyApiKey(apiKey);
 
-    validateValueRecharge({amount})
+    validateAmountGreaterThanZero({amount})
 
     next();
 }
 
-function validateValueRecharge(value: object){
+export function validateAmountGreaterThanZero(value: object){
     const { error } = rechargeSchema.validate(value);
     if(error){
         throw { code: 'RechargeValueInvalid', message: 'Your value needs to be greater than 0!'}

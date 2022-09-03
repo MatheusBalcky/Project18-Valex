@@ -17,15 +17,18 @@ export async function errorHandler (error: any, req :Request, res :Response, nex
         // Conflict
     }
 
-    if(error.code === 'ExpiredCard' 
+    if (error.code === 'ExpiredCard' 
     || error.code === 'CardAlreadyActivated' 
     || error.code === 'CardAlreadyBlocked'
     || error.code === 'InvalidCompanyKey'
-    || error.code === 'CardNotActivatedError'){
+    || error.code === 'CardNotActivatedError'
+    || error.code === 'InvalidBusiness'
+    || error.code === 'CardTypeNotEqualToBusinessType'
+    || error.code === 'NotEnoughMoney'){
 
         return res.status(405).send({ error: error.message, moreDetails: error.messageDetail});
         // Not allowed
-        
+
     }
 
     if(error.code === 'SecurityCodeIncorrect' || error.code === 'IncorrectPassword' || error.code === 'RechargeValueInvalid'){

@@ -10,7 +10,7 @@ export async function rechargeCardService(cardId: number) {
     verifyExpirationDate(card.expirationDate);
 }
 
-function verifyIfTheCardsIsActivated(card: any){
+export function verifyIfTheCardsIsActivated(card: any){
     if(!card.password){
         throw { code: 'CardNotActivatedError', message: 'Your card is not activated!'}
     }
