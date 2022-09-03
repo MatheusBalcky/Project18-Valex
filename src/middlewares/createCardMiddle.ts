@@ -13,7 +13,7 @@ export async function createCardMiddle(req :Request, res :Response, next :NextFu
 }
 
 function verifyCardType(type: TransactionTypes){
-    if(!['groceries', 'restaurants', 'transport', 'education', 'health'].includes(type)){
+    if(!['groceries', 'restaurant', 'transport', 'education', 'health'].includes(type)){
         throw { code: 'InvalidCardType', message: 'Card type invalid'}
     }
 }

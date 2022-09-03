@@ -23,7 +23,7 @@ export async function createCardService(apiKey: string, employeeId: number, type
         password: undefined,
         isVirtual: true,
         originalCardId: undefined,
-        isBlocked: true,
+        isBlocked: false,
         type
     }
 

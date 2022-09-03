@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { createCardService } from "../services/createCardService";
 import * as cardsRepositories from "../repositories/cardRepository";
+import { decryptByCryptr } from "../utils/cryptrUtils";
 
 export async function createCard(req :Request, res :Response) {
     const apiKey = String(req.headers['x-api-key']);
@@ -10,7 +11,7 @@ export async function createCard(req :Request, res :Response) {
 
     await insertCard(cardDataToInsert);
 
-    res.sendStatus(200);
+    res.status(200).send({ yourSecurityCode: decryptByCryptr(cardDataToInsert.securityCode)});
 }
 
 async function insertCard(cardData: cardsRepositories.CardInsertData){
