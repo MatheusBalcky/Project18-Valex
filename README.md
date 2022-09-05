@@ -15,7 +15,7 @@ O Body da requisição deve ser feito no seguinte formato:
 }
 ```
 
-## Rota <span style="color:orange"> **POST** </span>/activateCard
+## Rota <span style="color:orange"> **PATCH** </span>/activateCard
 (Não autenticada)
 
 Sua função é ativar os cartões criados.
@@ -49,7 +49,7 @@ A resposta da requisição virá no seguinte formato:
 	]
 ```
 
-## Rotas <span style="color:orange"> **PUT** </span>/blockCard/:id e /unblockCard/:id
+## Rotas <span style="color:orange"> **PATCH** </span>/blockCard/:id e /unblockCard/:id
 (Não autenticada)
 
 Rota que permiti ao usuário bloquear e desbloquear um cartão.
